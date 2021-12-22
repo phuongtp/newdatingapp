@@ -1,0 +1,16 @@
+1. https://git-scm.com
+   Download Git to the local computer
+
+2. github.com
+   1. Create an account
+      account: phuongtp@gmail.com
+               Vvtgit2264
+3. How
+   cd ..
+   >git status
+   >git init   
+
+4. Create .ignore file
+  >dotnet -h
+  >dotnet new gitignore   
+  add appsettings.json into .gitignore file!

@@ -1,0 +1,33 @@
+What it is?
+
+Install:
+https://nuget.org/packages/dotnet-ef/
+>dotnet tool install --global dotnet-ef --version 6.0.1
+
+Commands:
+1.>cd API
+  >dotnet ef migrations add InitialCreate -o Data/Migrations
+  >dotnet ef database update
+
+1. An object Relation Mapper (ORM)
+2. Translates our code into SQL commands that update our tables in de DB
+3. DbContext, use to interacting with the DB.
+   DbContext.Users.Add(new User{Id = 4, Name = 'John'}) -->
+   INSERT INTO Users(id, name) VALUES(4, John)
+4. Features:
+   Querying
+   Change Tracking
+   Saving
+   Concurrency
+   Transactions
+   Caching
+   Built-in conventions
+   Configurations
+   Migrations
+
+5. Add EntityFramework to Project   
+   Install the following:
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.1"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.1"/>
