@@ -14,3 +14,17 @@
   >dotnet -h
   >dotnet new gitignore   
   add appsettings.json into .gitignore file!
+
+5. Git Setup:
+  1. git commit -m "first commit"
+  2. git branch -M master
+
+  Run this 2 commands:
+  3. git remote add origin https://github.com/phuongtp/newdatingapp.git
+  4. git push -u remote master
+
+  And in menu(...): pull/push > push to > choose https://github.com/phuongtp/newdatingapp.git
+  After that view codes in github.com (master branch)
+
+6. Save Section
+  

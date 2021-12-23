@@ -1,0 +1,2 @@
+(1) loop:
+    <li *ngFor="let user of users">{{user.id}} - {{user.userName}}</li>

@@ -1,0 +1,48 @@
+
+1. Using the Angular CLI
+   November 2021: Angular 12
+
+   a. NodeJs 16.10 or higher: Node --version
+
+   Install Angular CLI 12
+   >npm install -g @angular/cli@12
+   >ng --version
+
+   New application:
+   >ng new client --strict false
+   > answer route=yes
+   > css as style
+
+2. Angular Language Service:
+   Extension Settings:
+   Angular: Enable-strict-mode-prompt: UNCHECKED!!!
+
+3. Angular start:
+   >cd client
+   >ng serve
+   http://localhost:4200   
+
+4. Angular:
+   Module
+   Provider
+      
+5. Angular Styling:
+   x. getbootstrap.com: Don't use this. Because this use jQuery!!!
+   u. https://valor-software.com/ngx-bootstrap/old/6.2.0/#/documentation#getting-started
+   https://valor-software.com/ngx-bootstrap/old/7.1.0/#/documentation#getting-started
+   >npm install ngx-bootstrap
+   >npm install --save bootstrap@4.5.3
+   >npm install font-awesome
+
+6. Use Https   
+   read StudentAssets
+   1. create client/ssl folder and past 2 files server + server.key
+   2. in angular.json
+         ...
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "sslKey": "./ssl/server.key",
+            "sslCert": "./ssl/server.crt",
+            "browserTarget": "test:build"
+          },   
