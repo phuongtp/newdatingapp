@@ -9,6 +9,12 @@ Commands:
   >dotnet ef migrations add InitialCreate -o Data/Migrations
   >dotnet ef database update
 
+  Drop database
+  >dotnet ef database drop
+
+  Create Db again:
+  >dotnet ef database update
+
 1. An object Relation Mapper (ORM)
 2. Translates our code into SQL commands that update our tables in de DB
 3. DbContext, use to interacting with the DB.

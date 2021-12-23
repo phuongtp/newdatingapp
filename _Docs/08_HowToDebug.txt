@@ -1,0 +1,8 @@
+1. Create .vscode map in the root
+2. Ctrl+Shift+P
+   search: Generate Assets for build and debug
+   Generate
+3. Choose Debug (on the left)
+   . Choose: .NET Core Attach
+   press Play button
+   Choose API.exe

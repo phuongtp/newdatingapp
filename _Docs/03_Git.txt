@@ -27,4 +27,6 @@
   After that view codes in github.com (master branch)
 
 6. Save Section
-  
+  1. Changes: + click
+  2. ... : Commit/Commit
+  3. ... : Pull/Push / Push to... Choose the git version

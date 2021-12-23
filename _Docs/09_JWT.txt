@@ -1,0 +1,21 @@
+JWT: Json Web Token
+
+Industry Standard for tokens (RFC 7519)
+
+in jwt.io to check your token!!!
+ 
+Self-contained and can contain:
+  + Credentials (legitimatie bewijs)
+  + Claims      (bewering)
+  + Other information
+
+  JWT are self contained tokens
+  A single token can be used with multiple backends
+  mobile friendly (no cookies required)
+  Once a token is issued, there is no need to get data from the database
+
+  1. Implementing
+     See: ITokenService and TokenService;
+
+     install
+     System.IdentityModel.Tokens.Jwt
