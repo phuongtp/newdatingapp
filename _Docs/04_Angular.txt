@@ -1,8 +1,12 @@
 0. Angular generate commands
-   >cd src/app
+   cd src/app
    >ng g c nav --skip-tests
-   >cd _services
+   cd _services
    >ng g s account --skip-tests
+   cd src/app/_guards
+   >ng g guard auth --skip-tests
+   cd src/app/_modules
+   >ng g m shared --flat
  
 1. Using the Angular CLI
    November 2021: Angular 12

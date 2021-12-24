@@ -1,0 +1,11 @@
+1. bootswatch.com
+   >cd client
+   >npm install bootswatch
+
+2. In Angular.json:   
+            "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+-->           "./node_modules/bootswatch/dist/united/bootstrap.css",
+3. in nav.html:
+   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"> was
+   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary"> now
