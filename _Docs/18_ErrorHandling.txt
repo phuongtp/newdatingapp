@@ -1,0 +1,18 @@
+1. API Middleware
+
+2. Angular Interceptors
+
+3. Troubleshooting Exceptions
+
+API: Solution:
+a. Middleware
+   1. craete a folder: Errors
+      a. ApiException.cs
+   2. create a folder Middleware: 
+      a. ExceptionMiddleware.cs
+
+Client:      
+a. create src/app/_interceptors
+   cd _interceptors
+   >ng g interceptor error --skip-tests
+    
