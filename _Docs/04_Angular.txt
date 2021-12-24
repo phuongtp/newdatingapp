@@ -1,4 +1,9 @@
-
+0. Angular generate commands
+   >cd src/app
+   >ng g c nav --skip-tests
+   >cd _services
+   >ng g s account --skip-tests
+ 
 1. Using the Angular CLI
    November 2021: Angular 12
 
@@ -46,3 +51,13 @@
             "sslCert": "./ssl/server.crt",
             "browserTarget": "test:build"
           },   
+
+7. Angular Dropdown          
+   ngx bootstrap:
+   in appModule.ts:
+   import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
+8. Observables?
+   Just like news paper
+   if no-one subscribe than no data return
+   Can use with map, filter en pipe

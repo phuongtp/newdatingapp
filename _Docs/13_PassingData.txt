@@ -1,0 +1,53 @@
+How to parse data around
+1. appComponent --> home.Component --> register.component
+
+From Parent to Child
+(a) From Home.component to Register.component
+    1. register.ts: cach data from the call <app-register [usersFromHomeComponent]="users">
+       @Input() usersFromHomeComponent: any; 
+    2. register.html:
+        <div class="form-group">
+          <label >Who is your favoutite user?</label>
+          <select  class="form-control">
+            <option *ngFor="let user of usersFromHomeComponent"  [value]="user.userName">
+              {{user.userName}}
+            </option>
+          </select>
+        </div>    
+    3. home.ts:
+      export class HomeComponent implements OnInit {
+        ...
+        users: any;
+        constructor(private http: HttpClient) { }
+        ngOnInit(): void {
+          this.getUsers();
+        }
+        getUsers() {
+          this.http.get('https://localhost:5001/api/users').subscribe(users => this.users = users);
+        }
+      }
+    4. home.html: parse data from home to register
+      <div class="col-4">
+        <app-register [usersFromHomeComponent]="users"></app-register>
+      </div>    
+
+(b) When Cancel click in Register from --> Turn off registerMode in Home.component?
+    1. Register.js:  Define outpyt event emitter:
+       @Output() cancelRegister = new EventEmitter();
+       ...
+       cancel() {
+         this.cancelRegister.emit(false);
+       }
+    2. Register.html: activate event cancel click:
+       <button class="btn btn-info mr-2" (click)="cancel()">Cancel</button>
+
+    3. Home.ts: Function to handle the event:
+        cancelRegisterMode(event: boolean) {
+          this.registerMode = event;
+        }    
+    4. Home.html: Send data back to home with: (cancelRegister)="cancelRegisterMode($event)"
+        <div class="col-4">
+          <app-register 
+            [usersFromHomeComponent]="users"
+            (cancelRegister)="cancelRegisterMode($event)"></app-register>
+        </div>    
