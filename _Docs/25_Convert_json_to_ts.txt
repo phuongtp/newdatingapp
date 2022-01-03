@@ -1,0 +1,4 @@
+1. search for json to ts:
+   http://json2ts.com/
+
+   parse json to create de TypeScript definition 

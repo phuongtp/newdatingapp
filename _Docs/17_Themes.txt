@@ -9,3 +9,7 @@
 3. in nav.html:
    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"> was
    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary"> now
+
+4. Tab
+   valor-software.com/ngx-bootstrap/   
+   https://valor-software.com/ngx-bootstrap/#/components/tabs?tab=overview

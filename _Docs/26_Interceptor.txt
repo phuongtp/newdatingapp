@@ -1,0 +1,8 @@
+1. app/_interceptors
+   a. error.interceptor.ts
+      Generic error handling
+   b. jwt.interceptor.ts
+      Generic sending header with JWT.
+
+Add this to app.module.ts:
+{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}      

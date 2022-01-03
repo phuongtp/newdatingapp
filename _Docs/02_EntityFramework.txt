@@ -15,6 +15,9 @@ Commands:
   Create Db again:
   >dotnet ef database update
 
+  Remove migration:
+  >>dotnet ef migrations remove
+
 1. An object Relation Mapper (ORM)
 2. Translates our code into SQL commands that update our tables in de DB
 3. DbContext, use to interacting with the DB.

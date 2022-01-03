@@ -1,0 +1,69 @@
+1. Install with Nuget: 
+   AutoMapper.Extensions.Microsoft.DependencyInjection
+
+2. Create Helpers/AutoMapperProfiles.cs
+    public AutoMapperProfiles()
+    {
+        CreateMap<AppUser, MemberDto>()
+            .ForMember(dest => dest.PhotoUrl, opt => opt.MapFrom(src => src.Photos.FirstOrDefault(x => x.IsMain).Url))
+            .ForMember(dest => dest.Age, opt => opt.MapFrom(src => src.DateOfBirth.CalculateAge()));
+        CreateMap<Photo, PhotoDto>();        
+    }   
+3. In Services addAutoMapper:
+    services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
+
+4. UserRepository
+      public class UserRepository : IUserRepository
+      {
+         private readonly DataContext _context;
+         private IMapper _mapper;
+         public UserRepository(DataContext context, IMapper mapper)
+         {
+            _mapper = mapper;
+            _context = context;        
+         }
+
+         public async Task<MemberDto> GetMemberAsync(string username)
+         {
+            return await _context.Users.Where(x =>x.UserName == username)
+                              .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
+                              .SingleOrDefaultAsync();
+         }
+
+         public async Task<IEnumerable<MemberDto>> GetMembersAsync()
+         {
+            return await _context.Users
+                        .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
+                        .ToListAsync();        
+         }
+      }
+
+5. Usage: see UsersController    
+  [Authorize]
+  public class UsersController : BaseApiController
+  {
+    private readonly IUserRepository _userRepository;
+    private readonly IMapper _mapper;
+
+    public UsersController(IUserRepository userRepository, IMapper mapper)
+    {
+      _userRepository = userRepository;
+      _mapper = mapper;
+    }
+
+    [HttpGet]
+    // [AllowAnonymous]
+    public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers()
+    {
+       var users = await _userRepository.GetMembersAsync();
+        return Ok(users);
+    }
+
+    // api/users/3
+    // [Authorize]
+    [HttpGet("{username}")]
+    public async Task<ActionResult<MemberDto>> GetUser(string username)
+    {
+        return await _userRepository.GetMemberAsync(username);        
+    }    
+  }

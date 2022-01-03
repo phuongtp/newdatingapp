@@ -1,0 +1,8 @@
+1. Change the get context:
+   was: return await _context.Users.ToListAsync();
+   new: return await _context.Users
+                       .include(p => p.Photos)
+                       .ToListAsync();
+        --> Circle references!!!
+        Solved this problem with:  -> MemberDto and PhotoDto
+        And AutoMapper !!!

@@ -1,0 +1,19 @@
+EntityFramework
+1. Relationships
+   a. one to many: one user have many photos
+   b. After migration, 
+      EF add extra column to Photo: AppUserId (with nullable = true!!!)
+      and onDelete: Reference restriction!
+   c. remove the migration first:
+      >dotnet ef migrations remove
+   d. Add 2 extra column to Photo class: Fully defining the relation between Photo and AppUser
+      public AppUser AppUser { get; set; }
+      public int AppUserId { get; set; }
+   e. Run add migrations again:
+      >dotnet ef migrations add ExtendedUserEntity
+      >dotnet ef database update
+
+2. Conventions
+3. Seeding Data into the db
+4. The repository pattern
+5. Using AutoMapper

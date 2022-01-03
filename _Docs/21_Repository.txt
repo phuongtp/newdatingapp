@@ -1,0 +1,20 @@
+1. Repository
+
+   WebServer --> Controller --> Repository --> DbContext --> Database
+
+    DbContext --> Users.First()
+                  Users.FirstOrDefault()
+
+    Repository --> GetUser()
+                   GetUsers()
+
+                MockRepository for Testing!!!
+
+
+    Decouples application from persistence framework
+    All database queries are centralised and not scattered through the application
+    Easy to replace the ORM.
+
+    Disadvantages of Repository
+    Abstraction of an Abstraction
+    

@@ -1,0 +1,13 @@
+1. json-generator.com
+   a. use in student... jsongenerator.txt to generate the records
+
+2. Create in Data:
+   a. UserSeedData.json (paste the generated content of json here)
+   a. Seed.cs
+
+3. Change Program.cs
+
+4. Delete all User records
+
+5. Restart the API:
+   >dotnet watch run

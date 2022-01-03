@@ -10,6 +10,7 @@ a. Middleware
       a. ApiException.cs
    2. create a folder Middleware: 
       a. ExceptionMiddleware.cs
+   3. BuggyController.cs
 
 Client:      
 a. create src/app/_interceptors

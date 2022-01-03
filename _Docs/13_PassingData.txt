@@ -51,3 +51,5 @@ From Parent to Child
             [usersFromHomeComponent]="users"
             (cancelRegister)="cancelRegisterMode($event)"></app-register>
         </div>    
+
+(c) Parsing data from member-list to member-card        
