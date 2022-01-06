@@ -1,2 +1,29 @@
 >cd src/app/_guards
 >ng g guard auth --skip-tests
+
+Wanneer Guard gebruiken:
+1. Om de menu te beveiligen.
+2. Om gewijzigde tekst bij te houden.
+
+
+(2) Bij Member Edit: 
+  Let op! dit alleen binnen Angular app!!!
+    a. in Guard: _guards/prevent-unsaved-changes.guards.ts
+        export class PreventUnsavedChangesGuard implements CanDeactivate<unknown> {
+          canDeactivate(component: MemberEditComponent): boolean {
+            if (component.editForm.dirty) {
+              return confirm('Are you sure you want to continue? Any unsaved changes will be lost?');
+            }
+            return true;
+          }  
+        }
+    b. In app-routing.module.ts:
+       {path: 'member/edit', component: MemberEditComponent, canDeactivate: [PreventUnsavedChangesGuard]},
+
+   Voor andere changes dan Angular:
+   In member-edit.component.ts:
+   @HostListener('window:beforeunload', ['$event']) unloadNotofication($event: any) {
+    if (this.editForm.dirty) {
+      $event.returnValue = true;
+    }
+  }       

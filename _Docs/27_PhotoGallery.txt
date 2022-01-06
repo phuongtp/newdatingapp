@@ -1,4 +1,5 @@
 search ngx gallery
+https://www.npmjs.com/package/@kolkov/ngx-gallery
 >npm install @kolkov/ngx-gallery --force
 
 >see demo
