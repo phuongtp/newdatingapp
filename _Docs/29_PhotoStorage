@@ -1,0 +1,47 @@
+Photo Storage Options:
+1. Bynary data In de database is niet handig!!!
+2. File server is ook niet handig! Storing in de files server.
+3. CloudService:
+   Cloudinary.com (10GB free storaged).
+   username: phuongtp@gmail.com
+   password: Vvt@clo2264
+
+   Cloud Name  ppwebservices
+   API Key     614154325616123
+   API Secret  MnmkoDSvcvpbv_HDx7aHO-tR4TQ
+
+   Documentation:
+   https://cloudinary.com/documentation/how_to_integrate_cloudinary
+
+   1. Client uploads photo to API with JWT
+   2. Server uploads the photo to Cloudinary
+   3. Cloudinary stores photo, send response
+   4. API saves photo URL and public ID to DB.
+   5. Saved in DB and given.. 
+
+   HowTo---------------------------------------------------------------------
+   1. Nuget: CloudinaryDotNet  install
+   2. appsettings.json
+      "CloudinarySettings": {
+        "CloudName": "ppwebservices",
+        "ApiKey": "614154325616123",
+        "ApiSecret": "MnmkoDSvcvpbv_HDx7aHO-tR4TQ"
+      },      
+  3. Helpers/CloudinarySettings.cs
+     Defineren de 3 velden: CloudName, ApiKey en ApiSecret
+  4. In Extensions/ApplicationServiceExtensions: load de settings
+     services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
+  5. Add Service, to upload en download photo.
+     PhotoService.cs
+     ...
+     services.AddScoped<IPhotoService, PhotoService>();
+  6. Usage the settings:
+      public PhotoService(IOptions<CloudinarySettings> config)
+      {
+          var acc = new Account(
+              config.Value.CloudName,
+              config.Value.ApiKey,
+              config.Value.ApiSecret
+          );
+          _cloudinary = new Cloudinary(acc);
+      }

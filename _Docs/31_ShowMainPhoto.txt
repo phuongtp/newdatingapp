@@ -1,0 +1,19 @@
+
+API
+1. UserDto + PhotoUrl {get;set;}
+2. AccountController.cs
+   Login:
+     PhotoUrl = user.photos.firstordefault(x => x.IsMain)?.Url
+
+Client
+  1. user.ts  + phuotoUrl
+  2. account.service.ts:
+     setUser --> currentUser$
+  3. nav.component.html
+     + <img src="{{user.photoUrl}}" alt="{{user.username}}"
+     + css:
+     img {
+      max-height: 50px;  
+      border: 2px solid #fff;
+      display: inline;
+    }

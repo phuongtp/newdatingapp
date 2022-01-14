@@ -1,0 +1,24 @@
+1. API
+   UsersController.cs:
+   + delete-photo:
+
+2. Client
+   Member.service.ts:
+   add 
+    deletePhoto(photoId: number) {
+      return this.http.delete(this.baseUrl + 'users/delete-photo/' + photoId);
+    }      
+
+  in photo-editor.ts:
+    deletePhoto(photoId: number) {
+    this.memberService.deletePhoto(photoId).subscribe(() => {
+      this.member.photos = this.member.photos.filter(x => x.id !== photoId);
+    })
+  }
+
+  in photo-editor.html:
+        <button 
+        [disabled]="photo.isMain"
+        (click)="deletePhoto(photo.id)"
+        class="btn btn-sm btn-danger"         
+       ><i class="fa fa-trash"></i></button>
