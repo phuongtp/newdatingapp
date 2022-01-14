@@ -1,0 +1,64 @@
+1. Create _forms folder:
+   >cd src\app\_forms
+   >ng g c text-input --skip-tests
+
+2. In text-input.ts:
+    import { Component, Input, OnInit, Self } from '@angular/core';
+    import { ControlValueAccessor, NgControl } from '@angular/forms';
+
+    @Component({
+      selector: 'app-text-input',
+      templateUrl: './text-input.component.html',
+      styleUrls: ['./text-input.component.css']
+    })
+    export class TextInputComponent implements ControlValueAccessor {
+      @Input() label: string;
+      @Input() type = 'text';
+
+      constructor(@Self() public ngControl: NgControl) { 
+        this.ngControl.valueAccessor = this;
+      }
+
+      writeValue(obj: any): void {
+      }
+
+      registerOnChange(fn: any): void {
+      }
+
+      registerOnTouched(fn: any): void {
+      }
+
+    }   
+
+2. In text-input.html:    
+  <div class="form-group">
+    <input 
+      [class.is-invalid]="ngControl.touched && ngControl.invalid"
+      type={{type}}
+      class="form-control" 
+      [formControl]="ngControl.control"
+      placeholder={{label}}>
+      <div *ngIf="ngControl.control.errors?.required" class="invalid-feedback">Please enter a {{label}}</div>
+      <div *ngIf="ngControl.control.errors?.minlength" class="invalid-feedback">
+        {{label}} must be at least {{ngControl.control.errors.minlength['requiredLength']}}</div>
+      <div *ngIf="ngControl.control.errors?.maxlength" class="invalid-feedback">
+        {{label}} must be at most {{ngControl.control.errors.maxlength['requiredLength']}}</div>
+      <div *ngIf="ngControl.control.errors?.isMatching" class="invalid-feedback">
+        Passwords do not match</div>
+  </div>
+
+  3. In register.component.html:
+    <form [formGroup]='registerForm' (ngSubmit)="register()" autocomplete="off">
+    <h2 class="text-center text-primary">Sign up</h2>
+    <hr>
+    <app-text-input [formControl]='registerForm.controls["username"]' 
+      [label]='"Username"'></app-text-input>
+    <app-text-input [formControl]='registerForm.controls["password"]' 
+      [label]='"Password"' [type]='"password"'></app-text-input>
+    <app-text-input [formControl]='registerForm.controls["confirmPassword"]' 
+      [label]='"Confirm Password"' [type]='"password"'></app-text-input>
+    <div class="form-group text-center">
+      <button class="btn btn-success mr-2" type="submit">Register</button>
+      <button class="btn btn-info mr-2" (click)="cancel()">Cancel</button>
+    </div>
+  </form>

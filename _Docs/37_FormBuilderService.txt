@@ -1,0 +1,19 @@
+1. register.component.ts:
+   a. add private fb: FormBuilder
+     constructor(private accountService: AccountService, private toastr: ToastrService, private fb: FormBuilder) { }
+  b. in initializeForm, change this:
+  initializeForm() {
+    // was:
+    this.registerForm = new FormGroup({
+       username: new FormControl('', Validators.required),
+       password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]),
+       confirmPassword: new FormControl('', [Validators.required, this.matchValues('password')])
+    })      
+    // Now: let op! GEEEN FromControl() any more!!!
+    this.registerForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', [Validators.required,
+        Validators.minLength(4), Validators.maxLength(8)]],
+      confirmPassword: ['', [Validators.required, this.matchValues('password')]]
+    })
+   
